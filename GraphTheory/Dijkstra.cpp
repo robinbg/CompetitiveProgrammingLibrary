@@ -1,3 +1,20 @@
+#include<bits/stdc++.h>
+#include<ext/pb_ds/priority_queue.hpp> // pb_ds may be unavailable in some contests
+using namespace std;
+
+vector<int> v[1000],w[1000];// Adjacent List 
+struct node
+{
+	int v;
+	int dist;
+	bool operator<(const node & b)const
+	{
+		return dist>b.dist;
+	}
+};
+int dist[1000];
+bool flag[1000];
+using Heap = priority_queue<node>;
 
 void DijkstraWithHeap()
 {
