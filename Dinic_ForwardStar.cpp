@@ -1,5 +1,5 @@
 
-vector<int> u,v,c,_next;
+vector<int> u,v,c,_next;// Forward Star
 int last[100];
 inline int addedge(int _u,int _v,int _c)
 {
@@ -15,7 +15,7 @@ inline int addedge(int _u,int _v,int _c)
     last[_v]=u.size()-1;
 }
 int dist[100];
-int s,t;
+int s,t;//source and sink
 bool BFS()
 {
     memset(dist,-1,sizeof(dist));
@@ -57,3 +57,4 @@ int Dinic()
     while(BFS()) maxflow+=DFS(s,0x7fffffff);
     return maxflow;
 }
+
