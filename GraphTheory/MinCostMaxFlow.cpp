@@ -41,11 +41,10 @@ void addedge(int s, int t, int cap, int cost)
 
 int spfa(int s, int t)
 {
-    memset(d,-INF,sizeof(d));
+    memset(d,INF,sizeof(d));
     memset(pre,-1,sizeof(pre));
     memset(path,-1,sizeof(path));
     memset(vis,false,sizeof(vis));
-    int res = d[0];
     d[s] = 0;
     vis[s] = true;
     queue<int>q;
@@ -58,7 +57,7 @@ int spfa(int s, int t)
         for (int i = head[u]; ~i; i = e[i].next)
         {
             int v = e[i].to;
-            if (d[v] < d[u] + e[i].cost && e[i].cap > 0)
+            if (d[v] > d[u] + e[i].cost && e[i].cap > 0)
             {
                 d[v] = d[u] + e[i].cost;
                 pre[v] = u;
@@ -71,7 +70,7 @@ int spfa(int s, int t)
             }
         }
     }
-    return d[t] != res;
+    return pre[v] != -1;
 }
 
 int MinCostMaxFlow(int s, int t,int &cost)
