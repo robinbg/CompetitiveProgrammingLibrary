@@ -12,3 +12,5 @@ vector<int> z_function(string s) {
   }
   return z;
 }
+/*
+定义函数z表示s和s[i,n-1](即以i开头的后缀）的最长公共前缀（LCP）的长度。 被称为  的 Z 函数。特别地z[0]=0
