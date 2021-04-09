@@ -1,12 +1,7 @@
 /*
    Source:Huigeng Ye(jvruo.com)
    */
-#include<cmath>
-#include<cstdio>
-#include<cstdlib>
-#include<cstring> 
 #include<complex>//c++自带的复数库
-#include<algorithm>
 using namespace std;
 double pi=acos(-1);
 
@@ -46,6 +41,43 @@ int main()
     fft(c,n,-1);
     for(int i=0;i<=m;i++)printf("%d ",int(c[i].real()/n+0.5));
     return 0;
+}
+/*高精乘*/
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	string x,y;
+	while(cin>>x>>y)
+	{
+		int n=x.length(), m = y.length();
+		memset(a,0,sizeof a);
+		memset(b,0,sizeof b);
+		for(int i=1;i<=n;i++) a[n-i] = double(x[i-1]-'0');
+		for(int j=1;j<=m;j++) b[m-j] = double(y[j-1]-'0');
+		memset(c,0,sizeof c);
+		m+=n;
+		n=1;
+		while(n<=m)n<<=1;
+		fft(a,n,1);
+		fft(b,n,1);
+		for(int i=0;i<=n;i++)c[i]=a[i]*b[i];
+		fft(c,n,-1);
+		memset(ans,0,sizeof(ans));
+		for(int i=0;i<=m;i++)ans[i]=int(c[i].real()/n+0.5);
+		for(int i=1;i<=m;i++)
+		{
+			ans[i]+=ans[i-1]/10;
+			ans[i-1]%=10;
+		}
+		int i=m;
+      
+		while(!ans[i] && i>=0)i--;
+		if(i<0)cout<<0;
+		for(;i>=0;i--)cout<<ans[i];
+	
+		cout<<endl;
+   } 
 }
 /*非递归*/
 #include<iostream>
