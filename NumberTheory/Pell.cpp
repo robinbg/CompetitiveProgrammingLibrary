@@ -1,4 +1,5 @@
-//求出p2 - D * q2 = 1的基解(最小正整数解),这个可能溢出,有必要的话,用java, 写成类比较好
+//求出p2 - D * q2 = 1的基解(最小正整数解),这个可能溢出,有必要的话,用java, 写成类比较)
+//xk + yk * sqrt(D) = (x1 + y1 *sqrt(D))^k
 bool PQA(LLI D, LLI &p, LLI &q) {//来自于PQA算法的一个特例
 	LLI d = sqrt(D);
 	if ((d + 1) * (d + 1) == D)	return false;
