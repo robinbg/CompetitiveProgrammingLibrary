@@ -1,4 +1,4 @@
-//
+//p为奇素数
 int mod;
 lolong I_mul_I; // 虚数单位的平方
 
